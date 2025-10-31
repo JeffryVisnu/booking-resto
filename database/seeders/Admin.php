@@ -22,5 +22,6 @@ class Admin extends Seeder
             'remember_token' => Str::random(10),
             'is_admin'=> 1,
         ]);
+        
     }
 }
