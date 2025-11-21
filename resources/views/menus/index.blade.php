@@ -18,7 +18,7 @@
                         <p class="text-gray-600 leading-normal">{{ $menu->description }}</p>
                     </div>
                     <div class="px-6 py-4 flex items-center justify-center">
-                        <span class="text-lg font-semibold text-green-700">${{ $menu->price }}</span>
+                        <span class="text-lg font-semibold text-green-700">Rp. {{ $menu->price }}</span>
                     </div>
                 </div>
             @endforeach

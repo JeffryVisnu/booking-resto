@@ -18,10 +18,11 @@
                 <table class="min-w-full divide-y divide-gray-700">
                     <thead class="bg-gray-800">
                         <tr>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Reservation ID</th>
                             <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Name</th>
                             <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Phone</th>
                             <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Date</th>
-                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Table</th>
                             <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Guests</th>
                             <th class="px-6 py-3"></th>
                         </tr>
@@ -31,6 +32,9 @@
                         @foreach ($reservations as $reservation)
                             <tr class="hover:bg-gray-800/50">
                                 <td class="px-6 py-4 text-gray-100">
+                                    {{ $reservation->id }}
+                                </td>
+                                <td class="px-6 py-4 text-gray-100">
                                     {{ $reservation->first_name }} {{ $reservation->last_name }}
                                 </td>
 
@@ -39,11 +43,11 @@
                                 </td>
 
                                 <td class="px-6 py-4 text-gray-300">
-                                    {{ $reservation->res_date }}
+                                    {{ $reservation->tel_number }}
                                 </td>
 
                                 <td class="px-6 py-4 text-gray-300">
-                                    {{ $reservation->table->name }}
+                                    {{ $reservation->res_date }}
                                 </td>
 
                                 <td class="px-6 py-4 text-gray-300">

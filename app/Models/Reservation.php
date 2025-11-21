@@ -12,15 +12,10 @@ class Reservation extends Model
         'email',
         'res_date', 
         'tel_number',
-        'table_id',
         'guest_number'
     ];
 
     protected $casts = [
         'res_date' => 'datetime'
     ];
-
-    public function table(){
-        return $this->belongsTo(Table::class);
-    }
 }
