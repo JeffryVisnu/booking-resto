@@ -24,9 +24,9 @@
         >
             <!-- Logo -->
             <div class="px-6 py-6 border-b border-[#4A3F35]">
-                <h1 class="text-2xl font-extrabold tracking-wide text-white">
+                <a href="/admin" class="text-2xl font-extrabold tracking-wide text-white">
                     Admin Panel
-                </h1>
+                </a>
             </div>
 
             <!-- Navigation -->
