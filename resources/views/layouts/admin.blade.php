@@ -20,7 +20,7 @@
         <!-- SIDEBAR -->
         <aside 
             x-data="{ open: false }"
-            class="w-64 bg-[#3A3A3A] text-[#FFF7E8] border-r border-[#4A3F35] hidden md:flex flex-col relative"
+            class="w-64 bg-[#3A3A3A] text-[#FFF7E8] border-r border-[#4A3F35] hidden md:flex flex-col fixed top-0 left-0 bottom-0"
         >
             <!-- Logo -->
             <div class="px-6 py-6 border-b border-[#4A3F35]">
@@ -69,7 +69,7 @@
 
                     <div x-show="drop"
                         x-transition
-                        class="absolute right-0 bottom-full mb-2 w-48 bg-[#3A3A3A] rounded-lg shadow-xl z-50 border border-[#4A3F35]"
+                        class="absolute right-0 bottom-full mb-2 w-48 bg-[#3A3A3A] rounded-lg shadow-xl z-50 border border-[#4A3F35] "
                     >
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
@@ -84,7 +84,7 @@
         </aside>
 
         <!-- MAIN CONTENT -->
-        <main class="flex-1 p-8 bg-[#FFF7E8] text-[#4A3F35]">
+        <main class="flex-1 p-8 bg-[#FFF7E8] text-[#4A3F35] md:ml-64">
 
             <!-- Alerts -->
             <div class="space-y-4 mb-6">

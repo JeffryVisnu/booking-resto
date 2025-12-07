@@ -3,14 +3,15 @@
         <h2 class="text-2xl font-bold text-amber-200">Categories</h2>
     </x-slot>
 
-    <div class="py-10">
-        <div class="max-w-4xl mx-auto">
+        <div class="py-8 max-w-6xl mx-auto">
 
-            <!-- Add Category -->
-            <a href="{{ route('admin.categories.create') }}"
-               class="inline-block mb-6 px-4 py-2 bg-amber-700 hover:bg-amber-800 text-white rounded-lg shadow-lg">
-                + Add Category
-            </a>
+            {{-- Add Category --}}
+            <div class="flex justify-end mb-6">
+                <a href="{{ route('admin.categories.create') }}"
+                    class="px-4 py-2 bg-amber-700 hover:bg-amber-800 text-white rounded-lg shadow-lg">
+                    + Add Category
+                </a>
+            </div>
 
             <div class="bg-[#3A2A1F] shadow-xl rounded-xl p-6 border border-[#6B4B32]">
                 <table class="w-full text-amber-100">
@@ -51,5 +52,4 @@
 
             </div>
         </div>
-    </div>
 </x-admin-layout>
