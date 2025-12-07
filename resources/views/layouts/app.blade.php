@@ -1,38 +1,33 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<!-- Page Content -->
+<main class="text-gray-200">
+    <style>
+        /* TEXTBOX COKLAT */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select,
+        textarea {
+            background-color: #4a3520 !important; /* Coklat gelap */
+            border: 1px solid #6b4b32 !important;
+            color: #f3e8d9 !important; /* teks lebih terang */
+        }
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        /* Placeholder lebih kuat */
+        input::placeholder,
+        textarea::placeholder {
+            color: #f5d7b3 !important;
+            opacity: 1; /* biar ga transparan */
+            font-weight: 600;
+        }
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+        /* Fokus lebih jelas */
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #d9a673 !important;
+            box-shadow: 0 0 5px #d9a673;
+        }
+    </style>
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-900 text-gray-200">
-
-            {{-- DARK NAVBAR --}}
-            @include('layouts.navigation')
-
-            <!-- Page Heading -->
-            @isset($header)
-                <header class="bg-gray-800 shadow border-b border-gray-700">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endisset
-
-            <!-- Page Content -->
-            <main class="text-gray-200">
-                {{ $slot }}
-            </main>
-        </div>
-    </body>
-</html>
+    {{ $slot }}
+</main>

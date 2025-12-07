@@ -2,7 +2,7 @@
     <div class="min-h-screen w-full flex items-center justify-center bg-[#FFF7E8] px-6 py-12">
 
         <!-- Login Card -->
-        <div class="bg-white w-full max-w-md p-8 rounded-2xl shadow-md border border-[#E6D8C5]">
+        <div class="bg-[#FFFAF3] w-full max-w-md p-8 rounded-2xl shadow-lg border border-[#D6C7B4]">
 
             <!-- Title -->
             <h2 class="text-3xl font-bold text-center text-[#4A3F35] mb-6 tracking-wide">
@@ -17,10 +17,17 @@
 
                 <!-- Email -->
                 <div>
-                    <x-input-label for="email" :value="__('Email')" class="text-[#4A3F35]" />
+                    <x-input-label
+                        for="email"
+                        :value="__('Email')"
+                        class="text-[#3A2F28] font-semibold text-lg"
+                    />
                     <x-text-input
                         id="email"
-                        class="block mt-2 w-full rounded-xl border-[#D6C7B4] focus:border-[#4A3F35] focus:ring-[#4A3F35]"
+                        class="block mt-2 w-full rounded-xl bg-[#E8DCCB] text-[#4A3F35]
+                               placeholder:text-[#6B5A4A]
+                               border border-[#B8A89A]
+                               focus:border-[#4A3F35] focus:ring-[#4A3F35]"
                         type="email"
                         name="email"
                         :value="old('email')"
@@ -32,10 +39,17 @@
 
                 <!-- Password -->
                 <div class="mt-4">
-                    <x-input-label for="password" :value="__('Password')" class="text-[#4A3F35]" />
+                    <x-input-label
+                        for="password"
+                        :value="__('Password')"
+                        class="text-[#3A2F28] font-semibold text-lg"
+                    />
                     <x-text-input
                         id="password"
-                        class="block mt-2 w-full rounded-xl border-[#D6C7B4] focus:border-[#4A3F35] focus:ring-[#4A3F35]"
+                        class="block mt-2 w-full rounded-xl bg-[#E8DCCB] text-[#4A3F35]
+                               placeholder:text-[#6B5A4A]
+                               border border-[#B8A89A]
+                               focus:border-[#4A3F35] focus:ring-[#4A3F35]"
                         type="password"
                         name="password"
                         required
@@ -49,7 +63,7 @@
                         <input
                             id="remember_me"
                             type="checkbox"
-                            class="rounded border-[#D6C7B4] text-[#4A3F35] focus:ring-[#4A3F35]"
+                            class="rounded border-[#B8A89A] text-[#4A3F35] focus:ring-[#4A3F35]"
                             name="remember"
                         >
                         <span class="ms-2 text-sm">{{ __('Remember me') }}</span>
@@ -68,7 +82,8 @@
                     @endif
 
                     <button
-                        class="px-6 py-2 bg-[#4A3F35] text-white rounded-xl shadow hover:bg-[#2F4F3A] transition-all duration-300"
+                        class="px-6 py-2 bg-[#4A3F35] text-white rounded-xl shadow
+                               hover:bg-[#2F4F3A] transition-all duration-300"
                     >
                         {{ __('Log in') }}
                     </button>

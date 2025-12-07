@@ -1,83 +1,67 @@
 <x-admin-layout>
     <x-slot name="header">
-        <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-200">Reservations</h2>
+        <h2 class="text-2xl font-bold text-gray-200">
+            Menus
+        </h2>
     </x-slot>
 
     <div class="py-10">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto space-y-6">
 
-            <!-- Add button -->
-            <div class="flex justify-end mb-4">
-                <a href="{{ route('admin.reservations.create') }}"
-                    class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg shadow">
-                    + New Reservation
+            <!-- Add Menu Button -->
+            <div class="flex justify-end">
+                <a href="{{ route('admin.menus.create') }}"
+                    class="px-4 py-2 bg-amber-700 hover:bg-amber-800 text-white rounded-lg shadow-lg">
+                    + Add Menu
                 </a>
             </div>
 
-            <div class="overflow-hidden bg-gray-900 border border-gray-800 shadow-xl rounded-xl">
-                <table class="min-w-full divide-y divide-gray-700">
-                    <thead class="bg-gray-800">
-                        <tr>
-                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Reservation ID</th>
-                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Name</th>
-                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Email</th>
-                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Phone</th>
-                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Date</th>
-                            <th class="px-6 py-3 text-left text-xs font-semibold text-gray-300 uppercase tracking-wider">Guests</th>
-                            <th class="px-6 py-3"></th>
-                        </tr>
-                    </thead>
+            <!-- Menu Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                    <tbody class="divide-y divide-gray-800">
-                        @foreach ($reservations as $reservation)
-                            <tr class="hover:bg-gray-800/50">
-                                <td class="px-6 py-4 text-gray-100">
-                                    {{ $reservation->id }}
-                                </td>
-                                <td class="px-6 py-4 text-gray-100">
-                                    {{ $reservation->first_name }} {{ $reservation->last_name }}
-                                </td>
+                @forelse ($menus as $menu)
+                    <div class="bg-[#3A2A1F] shadow-md rounded-xl overflow-hidden border border-[#6B4B32]">
 
-                                <td class="px-6 py-4 text-gray-300">
-                                    {{ $reservation->email }}
-                                </td>
+                        <img src="{{ Storage::url($menu->image) }}" class="w-full h-40 object-cover">
 
-                                <td class="px-6 py-4 text-gray-300">
-                                    {{ $reservation->tel_number }}
-                                </td>
+                        <div class="p-5 space-y-3">
+                            <h3 class="text-lg font-semibold text-amber-200">
+                                {{ $menu->name }}
+                            </h3>
 
-                                <td class="px-6 py-4 text-gray-300">
-                                    {{ $reservation->res_date }}
-                                </td>
+                            <p class="text-yellow-400 font-bold text-lg">
+                                Rp {{ number_format($menu->price, 2, ',', '.') }}
+                            </p>
 
-                                <td class="px-6 py-4 text-gray-300">
-                                    {{ $reservation->guest_number }}
-                                </td>
+                            <div class="flex items-center gap-3 pt-3">
+                                <a href="{{ route('admin.menus.edit', $menu->id) }}"
+                                   class="flex-1 text-center px-3 py-2 bg-green-700 hover:bg-green-800 text-white rounded-lg shadow">
+                                    Edit
+                                </a>
 
-                                <td class="px-6 py-4">
-                                    <div class="flex items-center gap-3">
-                                        <a href="{{ route('admin.reservations.edit', $reservation->id) }}"
-                                            class="px-3 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg">
-                                            Edit
-                                        </a>
+                                <form method="POST" action="{{ route('admin.menus.destroy', $menu->id) }}"
+                                      class="flex-1"
+                                      onsubmit="return confirm('Delete this menu?');">
+                                    @csrf
+                                    @method('DELETE')
 
-                                        <form method="POST" action="{{ route('admin.reservations.destroy', $reservation->id) }}"
-                                            onsubmit="return confirm('Are you sure?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit"
-                                                class="px-3 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
+                                    <button type="submit"
+                                            class="w-full px-3 py-2 bg-red-700 hover:bg-red-800 text-white rounded-lg shadow">
+                                        Delete
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
 
-                </table>
+                    </div>
+
+                @empty
+                    <p class="text-center text-gray-400 py-10 col-span-3">
+                        No menus found.
+                    </p>
+                @endforelse
             </div>
+
         </div>
     </div>
 </x-admin-layout>
