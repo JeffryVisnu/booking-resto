@@ -28,7 +28,7 @@
                             <tr class="border-b border-[#6B4B32]">
                                 <td class="px-5 py-3">{{ $reservation->first_name }} {{ $reservation->last_name }}</td>
                                 <td class="px-5 py-3">{{ $reservation->email }}</td>
-                                <td class="px-5 py-3">{{ $reservation->phone }}</td>
+                                <td class="px-5 py-3">{{ $reservation->tel_number}}</td>
                                 <td class="px-5 py-3">{{ $reservation->res_date->format('d M Y') }}</td>
                                 <td class="px-5 py-3">{{ $reservation->res_date->format('H:i') }}</td>
                                 <td class="px-5 py-3">{{ $reservation->guest_number }}</td>
