@@ -61,6 +61,36 @@
                                class="w-full p-2 bg-gray-100 border rounded-md">
                     </div>
                 </div>
+                @if(!empty($orderItems))
+                <div class="mt-8">
+                    <h3 class="text-xl font-semibold mb-4">Your Order</h3>
+            
+                    {{-- Foods --}}
+                    @if(!empty($orderItems['foods']))
+                        <h4 class="font-bold mt-2 text-lg">Foods</h4>
+                        <ul class="list-disc ml-6">
+                            @foreach($orderItems['foods'] as $food)
+                                <li>
+                                    {{ $food['name'] }} (Qty: {{ $food['qty'] }})
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+            
+                    {{-- Drinks --}}
+                    @if(!empty($orderItems['drinks']))
+                        <h4 class="font-bold mt-4 text-lg">Drinks</h4>
+                        <ul class="list-disc ml-6">
+                            @foreach($orderItems['drinks'] as $drink)
+                                <li>
+                                    {{ $drink['name'] }} (Qty: {{ $drink['qty'] }})
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                </div>
+            @endif
+            
 
                 <!-- Confirm -->
                 <div class="mt-6 flex items-start">

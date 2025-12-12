@@ -12,10 +12,17 @@ class Reservation extends Model
         'email',
         'res_date', 
         'tel_number',
-        'guest_number'
+        'guest_number',
+        'order_menu',
     ];
 
     protected $casts = [
         'res_date' => 'datetime'
     ];
+
+    public function orderItems()
+{
+    return $this->hasMany(ReservationOrderItem::class);
+}
+
 }

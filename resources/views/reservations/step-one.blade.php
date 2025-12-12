@@ -74,6 +74,20 @@
                         </div>
                     </div>
 
+                    <div class="mt-4">
+                        <label class="flex items-center">
+                            <input type="checkbox" name="wants_menu"
+                                {{ isset($reservation->wants_menu) ? 'checked' : '' }}
+                                class="mr-2">
+                            Would you like to order from the Menu?
+                        </label>
+                    
+                        <p class="text-xs text-gray-500 mt-1">
+                            Check this if you would like to order from the menu for this reservation.
+                        </p>
+                    </div>
+                    
+                    
                     <div class="mt-6 flex justify-end">
                         <button type="submit" 
                                 class="px-6 py-2 text-white rounded-lg font-medium"
@@ -82,7 +96,6 @@
                                 onmouseout="this.style.backgroundColor='#2f2f2f';">
                             Next
                         </button>
-
                     </div>
                 </form>
             </div>
