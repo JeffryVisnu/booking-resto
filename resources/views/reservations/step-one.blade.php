@@ -61,7 +61,7 @@
                                 max="{{ $max_date->format('Y-m-d\TH:i:s') }}"
                                 value="{{ $reservation ? $reservation->res_date->format('Y-m-d\TH:i:s') : '' }}"
                                 class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-500 focus:border-green-500" />
-                            <span class="text-xs text-gray-500">Please choose a time between 17:00-23:00.</span>
+                            <span class="text-xs text-gray-500">Please choose a date between today and one week from today and Please choose a time between 17:00-23:00.</span>
                             @error('res_date')<div class="text-sm text-red-500">{{ $message }}</div>@enderror
                         </div>
 

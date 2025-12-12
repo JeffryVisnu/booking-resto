@@ -24,12 +24,12 @@ class TimeBetween implements ValidationRule
         );
 
         // Allowed time range
-        $earliestTime = Carbon::createFromTimeString('12:00:00');
+        $earliestTime = Carbon::createFromTimeString('17:00:00');
         $latestTime   = Carbon::createFromTimeString('23:00:00');
 
         // Validate time
         if (! $pickupTime->between($earliestTime, $latestTime)) {
-            $fail('Please choose a time between 12:00 and 23:00.');
+            $fail('Please choose a time between 17:00 and 23:00.');
         }
     }
 }
