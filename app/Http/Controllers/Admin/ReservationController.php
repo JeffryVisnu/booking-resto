@@ -66,4 +66,22 @@ class ReservationController extends Controller
         return to_route('admin.reservations.index')
             ->with('warning', 'Reservation deleted successfully.');
     }
+
+    public function showOrders(Reservation $reservation)
+    {
+        // Ambil semua item order + menu + category
+        $reservation->load(['orderItems.menu.category']);
+    
+        // Kelompokkan makanan & minuman
+        $foods = $reservation->orderItems->filter(function ($item) {
+            return $item->menu->category->parent_id == 1;
+        });
+    
+        $drinks = $reservation->orderItems->filter(function ($item) {
+            return $item->menu->category->parent_id == 2;
+        });
+    
+        return view('admin.reservations.orders', compact('reservation', 'foods', 'drinks'));
+    }
+    
 }

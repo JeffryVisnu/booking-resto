@@ -158,57 +158,58 @@ class ReservationController extends Controller
     /* ==============================
          STEP 2 CONFIRM & SAVE
     ===============================*/
-    public function storeStepTwo(Request $request)
-    {
-        $request->validate([
-            'confirm' => ['required']
-        ]);
-    
-        $reservationSession = $request->session()->get('reservation');
-    
-        if (!$reservationSession) {
-            return redirect()->route('reservations.step.one');
-        }
-    
-        // 1. Simpan reservation ke database
-        $reservation = Reservation::create([
-            'first_name'    => $reservationSession->first_name,
-            'last_name'     => $reservationSession->last_name,
-            'email'         => $reservationSession->email,
-            'tel_number'    => $reservationSession->tel_number,
-            'res_date'      => $reservationSession->res_date,
-            'guest_number'  => $reservationSession->guest_number,
-        ]);
-    
-        // 2. Simpan order items ke tabel reservation_order_items
-        foreach ($reservationSession->order_items['foods'] ?? [] as $item) {
-            $menu = Menu::find($item['menu_id']);
-    
-            \App\Models\ReservationOrderItem::create([
-                'reservation_id' => $reservation->id,
-                'menu_id'        => $menu->id,
-                'menu_name'      => $menu->name,        // WAJIB
-                'qty'            => $item['qty'],
-                'price'          => $menu->price,       // WAJIB
-            ]);
-        }
-    
-        foreach ($reservationSession->order_items['drinks'] ?? [] as $item) {
-            $menu = Menu::find($item['menu_id']);
-    
-            \App\Models\ReservationOrderItem::create([
-                'reservation_id' => $reservation->id,
-                'menu_id'        => $menu->id,
-                'menu_name'      => $menu->name,        // WAJIB
-                'qty'            => $item['qty'],
-                'price'          => $menu->price,       // WAJIB
-            ]);
-        }
-    
-        // 3. Bersihkan session
-        $request->session()->forget('reservation');
-    
-        return redirect()->route('thankyou');
+public function storeStepTwo(Request $request)
+{
+    $request->validate([
+        'confirm' => ['required']
+    ]);
+
+    $reservationSession = $request->session()->get('reservation');
+
+    if (!$reservationSession) {
+        return redirect()->route('reservations.step.one');
     }
-        
+
+    // 1. Simpan reservation ke database
+    $reservation = Reservation::create([
+        'first_name'    => $reservationSession->first_name,
+        'last_name'     => $reservationSession->last_name,
+        'email'         => $reservationSession->email,
+        'tel_number'    => $reservationSession->tel_number,
+        'res_date'      => $reservationSession->res_date,
+        'guest_number'  => $reservationSession->guest_number,
+    ]);
+
+    // 2. Simpan order items ke tabel reservation_order_items
+foreach ($reservationSession->order_items['foods'] ?? [] as $item) {
+    $menu = Menu::find($item['menu_id']);
+
+    \App\Models\ReservationOrderItem::create([
+        'reservation_id' => $reservation->id,
+        'menu_id'        => $menu->id,
+        'menu_name'      => $menu->name,
+        'qty'            => $item['qty'],
+        'price'          => $menu->price * $item['qty'], // total price sesuai qty
+    ]);
+}
+
+foreach ($reservationSession->order_items['drinks'] ?? [] as $item) {
+    $menu = Menu::find($item['menu_id']);
+
+    \App\Models\ReservationOrderItem::create([
+        'reservation_id' => $reservation->id,
+        'menu_id'        => $menu->id,
+        'menu_name'      => $menu->name,
+        'qty'            => $item['qty'],
+        'price'          => $menu->price * $item['qty'], // total price sesuai qty
+    ]);
+}
+
+
+    // 3. Bersihkan session
+    $request->session()->forget('reservation');
+
+    return redirect()->route('thankyou');
+}
+    
 }

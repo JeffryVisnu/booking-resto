@@ -5,7 +5,7 @@
             <!-- Left image -->
             <div class="md:w-1/2 h-64 md:h-auto">
                 <img class="w-full h-full object-cover"
-                    src="https://cdn.pixabay.com/photo/2021/01/15/17/01/green-5919790__340.jpg" alt="Reservation Image" />
+                    src="{{ asset('storage/assets/waiter.png') }}" alt="Reservation Image" />
             </div>
 
             <!-- Form -->

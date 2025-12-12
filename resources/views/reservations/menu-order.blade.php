@@ -1,10 +1,10 @@
 <x-guest-layout>
 
-    <div class="flex justify-center py-12">
+    <div class="container w-full px-5 py-10 mx-auto bg-[#FFF7E8] min-h-screen flex items-center justify-center">
         <div class="bg-white shadow-md rounded-lg p-10 w-full max-w-3xl">
     
             <div class="flex justify-between items-center mb-6">
-                <h2 class="text-3xl font-bold">Menu Order</h2>
+                <h2 class="text-3xl font-bold text-[#4A3F35]">Menu Order</h2>
     
                 <a href="{{ route('menus.index') }}" target="_blank" 
                    class="text-sm text-gray-600 hover:text-black underline">
@@ -96,14 +96,20 @@
                 <div class="flex justify-between mt-10">
     
                     <a href="{{ route('reservations.step.one') }}"
-                        class="px-6 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-800">
-                        Previous
+                    class="px-6 py-2 text-white rounded-lg font-medium"
+                    style="background-color:#2f2f2f;"
+                    onmouseover="this.style.backgroundColor='#1f1f1f';"
+                    onmouseout="this.style.backgroundColor='#2f2f2f';">
+            Previous
                     </a>
     
-                    <button type="submit"
-                        class="px-6 py-2 bg-black text-white rounded-lg hover:bg-gray-900">
-                        Next
-                    </button>
+                    <button type="submit" 
+                                class="px-6 py-2 text-white rounded-lg font-medium"
+                                style="background-color:#2f2f2f;"
+                                onmouseover="this.style.backgroundColor='#1f1f1f';"
+                                onmouseout="this.style.backgroundColor='#2f2f2f';">
+                            Next
+                        </button>
                 </div>
     
             </form>

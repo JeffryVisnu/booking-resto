@@ -51,6 +51,12 @@
                     📅 Reservations
                 </x-admin-nav-link>
 
+                <x-admin-nav-link :href="route('admin.orders.index')"
+                    :active="request()->routeIs('admin.orders.index')"
+                    class="hover:bg-[#4A3F35]/40 rounded-lg text-[#FFF7E8]">
+                    📅 View Orders
+                </x-admin-nav-link>
+
             </nav>
 
             <!-- User Dropdown -->
