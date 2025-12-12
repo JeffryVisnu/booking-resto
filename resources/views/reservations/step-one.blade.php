@@ -14,7 +14,7 @@
 
                 <!-- Step Indicator -->
                 <div class="w-full bg-gray-200 rounded-full mb-6">
-                    <div class="w-1/4 p-1 text-xs font-medium text-center text-white bg-green-600 rounded-full">
+                    <div class="w-1/4 p-1 text-xs font-medium text-center text-white rounded-full" style="background-color:#2f2f2f;">
                         Step 1
                     </div>
                 </div>
@@ -61,7 +61,7 @@
                                 max="{{ $max_date->format('Y-m-d\TH:i:s') }}"
                                 value="{{ $reservation ? $reservation->res_date->format('Y-m-d\TH:i:s') : '' }}"
                                 class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-500 focus:border-green-500" />
-                            <span class="text-xs text-gray-500">Please choose a time between 17:00-23:00.</span>
+                            <span class="text-xs text-gray-500">Please choose a date between today and one week from today and Please choose a time between 17:00-23:00.</span>
                             @error('res_date')<div class="text-sm text-red-500">{{ $message }}</div>@enderror
                         </div>
 
@@ -75,9 +75,14 @@
                     </div>
 
                     <div class="mt-6 flex justify-end">
-                        <button type="submit" class="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-medium">
+                        <button type="submit" 
+                                class="px-6 py-2 text-white rounded-lg font-medium"
+                                style="background-color:#2f2f2f;"
+                                onmouseover="this.style.backgroundColor='#1f1f1f';"
+                                onmouseout="this.style.backgroundColor='#2f2f2f';">
                             Next
                         </button>
+
                     </div>
                 </form>
             </div>
