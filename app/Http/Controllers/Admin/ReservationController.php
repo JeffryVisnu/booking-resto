@@ -7,6 +7,8 @@ use App\Http\Requests\ReservationStoreRequest;
 use App\Models\Reservation;
 use Illuminate\Http\Request;
 
+
+
 class ReservationController extends Controller
 {
     /**
@@ -32,7 +34,6 @@ class ReservationController extends Controller
     public function store(ReservationStoreRequest $request)
     {
         Reservation::create($request->validated());
-        
         return to_route('admin.reservations.index')
             ->with('success', 'Reservation created successfully.');
     }
@@ -83,5 +84,5 @@ class ReservationController extends Controller
     
         return view('admin.reservations.orders', compact('reservation', 'foods', 'drinks'));
     }
-    
 }
+

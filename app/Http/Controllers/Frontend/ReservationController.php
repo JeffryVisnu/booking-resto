@@ -10,6 +10,9 @@ use App\Rules\DateBetween;
 use App\Rules\TimeBetween;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use App\Mail\SendEmail;
+use Illuminate\Support\Facades\Mail;
+
 
 class ReservationController extends Controller
 {
@@ -179,6 +182,9 @@ public function storeStepTwo(Request $request)
         'res_date'      => $reservationSession->res_date,
         'guest_number'  => $reservationSession->guest_number,
     ]);
+    // Kirim email konfirmasi  
+    Mail::to($reservationSession->email)
+    ->send(new SendEmail($reservationSession));
 
     // 2. Simpan order items ke tabel reservation_order_items
 foreach ($reservationSession->order_items['foods'] ?? [] as $item) {
@@ -204,8 +210,6 @@ foreach ($reservationSession->order_items['drinks'] ?? [] as $item) {
         'price'          => $menu->price * $item['qty'], // total price sesuai qty
     ]);
 }
-
-
     // 3. Bersihkan session
     $request->session()->forget('reservation');
 
