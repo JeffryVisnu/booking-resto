@@ -58,7 +58,7 @@ class ReservationController extends Controller
         $reservation->fill($validated);
         $request->session()->put('reservation', $reservation);
 
-        // Jika centang → pergi ke menu order
+        // Jika centang akan pergi ke menu order
         if ($request->has('wants_menu')) {
             return redirect()->route('reservations.menu.order');
         }
@@ -84,34 +84,63 @@ class ReservationController extends Controller
 
 
     public function storeMenuOrder(Request $request)
-    {
-        $foods  = $request->input('foods', []);
-        $drinks = $request->input('drinks', []);
+{
+    $foods  = $request->input('foods', []);
+    $drinks = $request->input('drinks', []);
 
-        // Remove rows tanpa menu_id
-        $foods  = array_filter($foods, fn($item) => !empty($item['menu_id']));
-        $drinks = array_filter($drinks, fn($item) => !empty($item['menu_id']));
+    $foods  = array_filter($foods, fn($item) => !empty($item['menu_id']));
+    $drinks = array_filter($drinks, fn($item) => !empty($item['menu_id']));
 
-        if (empty($foods) && empty($drinks)) {
-            return back()->with('error', 'Please select at least one menu item.');
-        }
-
-        $reservation = $request->session()->get('reservation');
-
-        if (!$reservation) {
-            return redirect()->route('reservations.step.one');
-        }
-
-        // Simpan menu ke session
-        $reservation->order_items = [
-            'foods' => array_values($foods),
-            'drinks' => array_values($drinks)
-        ];
-
-        $request->session()->put('reservation', $reservation);
-
-        return redirect()->route('reservations.step.two');
+    if (empty($foods) && empty($drinks)) {
+        return back()->with('error', 'Please select at least one menu item.');
     }
+
+    $reservation = $request->session()->get('reservation');
+
+    if (!$reservation) {
+        return redirect()->route('reservations.step.one');
+    }
+
+    $orderItems = [
+        'foods'  => [],
+        'drinks' => [],
+    ];
+
+    foreach ($foods as $item) {
+        $menu = Menu::find($item['menu_id']);
+        if ($menu) {
+           $orderItems['foods'][] = [
+                'menu_id'    => $menu->id,
+                'menu_name'  => $menu->name,
+                'qty'        => $item['qty'],
+                'unit_price' => $menu->price,
+                'total'      => $menu->price * $item['qty'],
+            ];
+
+        }
+    }
+
+    foreach ($drinks as $item) {
+        $menu = Menu::find($item['menu_id']);
+        if ($menu) {
+            $orderItems['drinks'][] = [
+                'menu_id'    => $menu->id,
+                'menu_name'  => $menu->name,
+                'qty'        => $item['qty'],
+                'unit_price' => $menu->price,
+                'total'      => $menu->price * $item['qty'],
+            ];
+
+        }
+    }
+
+    $reservation->order_items = $orderItems;
+
+    $request->session()->put('reservation', $reservation);
+
+    return redirect()->route('reservations.step.two');
+}
+
 
     /* ==============================
          STEP 2 VIEW
@@ -132,7 +161,7 @@ class ReservationController extends Controller
                 'drinks' => [],
             ];
 
-            // FOODS
+            // Makanan
             foreach ($reservation->order_items['foods'] ?? [] as $item) {
                 $menu = Menu::find($item['menu_id']);
                 if ($menu) {
@@ -143,7 +172,7 @@ class ReservationController extends Controller
                 }
             }
 
-            // DRINKS
+            // Minuman
             foreach ($reservation->order_items['drinks'] ?? [] as $item) {
                 $menu = Menu::find($item['menu_id']);
                 if ($menu) {

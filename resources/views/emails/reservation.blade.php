@@ -28,20 +28,34 @@
     @if(!empty($reservation->order_items['foods']))
         <strong>Makanan</strong>
         <ul>
-            @foreach($reservation->order_items['foods'] as $item)
-                <li>{{ $item['qty'] }} x Menu ID {{ $item['menu_id'] }}</li>
-            @endforeach
+        @foreach($reservation->order_items['foods'] as $item)
+            <li>
+                {{ $item['menu_name'] }} × {{ $item['qty'] }}
+                <br>
+                Harga: Rp {{ number_format($item['unit_price'], 0, ',', '.') }}
+                <br>
+                <strong>Total: Rp {{ number_format($item['total'], 0, ',', '.') }}</strong>
+            </li>
+        @endforeach
         </ul>
-    @endif
+        @endif
 
-    @if(!empty($reservation->order_items['drinks']))
+
+   @if(!empty($reservation->order_items['drinks']))
         <strong>Minuman</strong>
         <ul>
-            @foreach($reservation->order_items['drinks'] as $item)
-                <li>{{ $item['qty'] }} x Menu ID {{ $item['menu_id'] }}</li>
-            @endforeach
+        @foreach($reservation->order_items['drinks'] as $item)
+            <li>
+                {{ $item['menu_name'] }} × {{ $item['qty'] }}
+                <br>
+                Harga: Rp {{ number_format($item['unit_price'], 0, ',', '.') }}
+                <br>
+                <strong>Total: Rp {{ number_format($item['total'], 0, ',', '.') }}</strong>
+            </li>
+        @endforeach
         </ul>
-    @endif
+        @endif
+
 @endif
 
 <hr>
