@@ -79,17 +79,17 @@
             
             <!-- Card 1 -->
             <div class="relative bg-white rounded-xl shadow-lg p-8 w-[350px]">
-                <img src="{{ asset('storage/assets/ego.png') }}" 
+                <img src="{{ asset('storage/assets/Gordon_Ramsay.jpg') }}" 
                     class="w-24 h-24 rounded-full object-cover border-4 border-white absolute -top-12 left-1/2 transform -translate-x-1/2" />
     
-                <h3 class="text-xl italic font-serif text-gray-800 mt-12">It's Amazing</h3>
+                <h3 class="text-xl italic font-serif text-gray-800 mt-12">Fanf****ingtastic</h3>
                 <p class="text-gray-700 mt-2 text-sm leading-relaxed">
-                    At first I was a little skeptical about the food, but it turns out to be the
-                    best food I've ever ate in my life, it brings me back to my childhood,
-                    10/10 would eat here again.
+                   This restaurant delivers a fantastic dining experience from start to finish. 
+                   The atmosphere is vibrant and well thought out, striking a perfect balance between comfort and sophistication. 
+                   The staff are sharp, attentive, and clearly well-trained, making the entire experience smooth and enjoyable.
                 </p>
     
-                <p class="text-right mt-4 italic font-serif text-gray-900">Anton Ego</p>
+                <p class="text-right mt-4 italic font-serif text-gray-900">Gordon Ramsay</p>
             </div>
     
             <!-- Card 2 -->
@@ -109,17 +109,16 @@
     
             <!-- Card 3 -->
             <div class="relative bg-white rounded-xl shadow-lg p-8 w-[350px]">
-                <img src="{{ asset('storage/assets/ego.png') }}" 
+                <img src="{{ asset('storage/assets/chef_juna.jpg') }}" 
                     class="w-24 h-24 rounded-full object-cover border-4 border-white absolute -top-12 left-1/2 transform -translate-x-1/2" />
     
-                <h3 class="text-xl italic font-serif text-gray-800 mt-12">It's Amazing</h3>
+                <h3 class="text-xl italic font-serif text-gray-800 mt-12">Mantap</h3>
                 <p class="text-gray-700 mt-2 text-sm leading-relaxed">
-                    At first I was a little skeptical about the food, but it turns out to be the
-                    best food I've ever ate in my life, it brings me back to my childhood,
-                    10/10 would eat here again.
+                    Saya datang ke restoran ini dengan ekspektasi tinggi, dan secara umum pengalamannya cukup memuaskan. Dari segi kebersihan dan kerapian dapur, terlihat 
+                    jelas bahwa tim dapur bekerja dengan standar yang baik, ini poin penting yang sering diabaikan tapi sebenarnya sangat krusial.
                 </p>
     
-                <p class="text-right mt-4 italic font-serif text-gray-900">Anton Ego</p>
+                <p class="text-right mt-4 italic font-serif text-gray-900">Juna Rorimpandey</p>
             </div>
     
         </div>

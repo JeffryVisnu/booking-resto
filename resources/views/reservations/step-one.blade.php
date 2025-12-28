@@ -68,6 +68,8 @@
                         <div>
                             <label for="guest_number" class="block text-sm font-medium text-[#4A3F35]">Guest Number</label>
                             <input type="number" id="guest_number" name="guest_number"
+                                min =1
+                                max = 10
                                 value="{{ $reservation->guest_number ?? '' }}"
                                 class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-500 focus:border-green-500" />
                             @error('guest_number')<div class="text-sm text-red-500">{{ $message }}</div>@enderror

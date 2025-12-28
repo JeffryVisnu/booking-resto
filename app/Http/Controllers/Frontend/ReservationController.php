@@ -41,7 +41,7 @@ class ReservationController extends Controller
             'email' => ['required', 'email'],
             'res_date' => ['required', 'date', new DateBetween, new TimeBetween],
             'tel_number' => ['required'],
-            'guest_number' => ['required'],
+            'guest_number' => ['required', 'integer', 'max:10'],
             'wants_menu' => ['nullable']
         ]);
 
