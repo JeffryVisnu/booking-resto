@@ -14,7 +14,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased">
+    <body class="font-sans text-gray-900 antialiased bg-[#FFF7E8] min-h-screen">
         <div class="backdrop-blur-md bg-[#FFF7E8]/90 border-b border-[#E5C07B]/40 shadow-sm" x-data="{ isOpen: false }">
             <nav class="container mx-auto px-6 py-4 flex items-center justify-between">
         
@@ -60,8 +60,7 @@
         </div>
         
         
-        <div class="min-h-screen">
-            <div class="min-h-screen font-sans text-gray-900 antialiased">
+        <div class="min-h-screen bg-[#FFF7E8]">
                 {{ $slot }}
             </div>
             <footer class="bg-[#2F2F2F] py-14 border-t border-gray-700">
