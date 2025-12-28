@@ -24,7 +24,12 @@
     
                         <div class="flex-1">
                             <label class="text-sm">Food 1</label>
-                            <select name="foods[0][menu_id]" class="w-full border p-2 rounded-lg">
+                            <select name="foods[0][menu_id]" 
+                           class="w-full border p-2 rounded-lg
+                                focus:ring-[#E5C07B]
+                                focus:border-[#C9A35A]
+                                focus:outline-none">
+
                                 <option value="">--Pick One--</option>
                                 @foreach($foods as $menu)
                                     <option value="{{ $menu->id }}">{{ $menu->name }}</option>
@@ -36,7 +41,10 @@
                             <label class="text-sm">Quantity</label>
                             <input type="number" min="1" 
                                    name="foods[0][qty]" 
-                                   class="w-full border p-2 rounded-lg">
+                                   class="w-full border p-2 rounded-lg
+                                focus:ring-[#E5C07B]
+                                focus:border-[#C9A35A]
+                                focus:outline-none">
                         </div>
     
                         <button type="button"
@@ -62,7 +70,11 @@
     
                         <div class="flex-1">
                             <label class="text-sm">Drink 1</label>
-                            <select name="drinks[0][menu_id]" class="w-full border p-2 rounded-lg">
+                            <select name="drinks[0][menu_id]" 
+                            class="w-full border p-2 rounded-lg
+                                focus:ring-[#E5C07B]
+                                focus:border-[#C9A35A]
+                                focus:outline-none">
                                 <option value="">--Pick One--</option>
                                 @foreach($drinks as $menu)
                                     <option value="{{ $menu->id }}">{{ $menu->name }}</option>
@@ -74,7 +86,10 @@
                             <label class="text-sm">Quantity</label>
                             <input type="number" min="1" 
                                    name="drinks[0][qty]" 
-                                   class="w-full border p-2 rounded-lg">
+                                   class="w-full border p-2 rounded-lg
+                                focus:ring-[#E5C07B]
+                                focus:border-[#C9A35A]
+                                focus:outline-none">
                         </div>
     
                         <button type="button"

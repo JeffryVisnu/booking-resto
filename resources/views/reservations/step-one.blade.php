@@ -26,7 +26,7 @@
                             <label for="first_name" class="block text-sm font-medium text-[#4A3F35]">First Name</label>
                             <input type="text" id="first_name" name="first_name"
                                 value="{{ $reservation->first_name ?? '' }}"
-                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-500 focus:border-green-500" />
+                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#E5C07B] focus:border-[#C9A35A]" />
                             @error('first_name')<div class="text-sm text-red-500">{{ $message }}</div>@enderror
                         </div>
 
@@ -34,7 +34,7 @@
                             <label for="last_name" class="block text-sm font-medium text-[#4A3F35]">Last Name</label>
                             <input type="text" id="last_name" name="last_name"
                                 value="{{ $reservation->last_name ?? '' }}"
-                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-500 focus:border-green-500" />
+                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#E5C07B] focus:border-[#C9A35A]" />
                             @error('last_name')<div class="text-sm text-red-500">{{ $message }}</div>@enderror
                         </div>
 
@@ -42,7 +42,7 @@
                             <label for="email" class="block text-sm font-medium text-[#4A3F35]">Email</label>
                             <input type="email" id="email" name="email"
                                 value="{{ $reservation->email ?? '' }}"
-                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-500 focus:border-green-500" />
+                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#E5C07B] focus:border-[#C9A35A]" />
                             @error('email')<div class="text-sm text-red-500">{{ $message }}</div>@enderror
                         </div>
 
@@ -50,7 +50,7 @@
                             <label for="tel_number" class="block text-sm font-medium text-[#4A3F35]">Phone Number</label>
                             <input type="text" id="tel_number" name="tel_number"
                                 value="{{ $reservation->tel_number ?? '' }}"
-                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-500 focus:border-green-500" />
+                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#E5C07B] focus:border-[#C9A35A]" />
                             @error('tel_number')<div class="text-sm text-red-500">{{ $message }}</div>@enderror
                         </div>
 
@@ -60,7 +60,7 @@
                                 min="{{ $min_date->format('Y-m-d\TH:i:s') }}"
                                 max="{{ $max_date->format('Y-m-d\TH:i:s') }}"
                                 value="{{ $reservation ? $reservation->res_date->format('Y-m-d\TH:i:s') : '' }}"
-                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-500 focus:border-green-500" />
+                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#E5C07B] focus:border-[#C9A35A]" />
                             <span class="text-xs text-gray-500">Please choose a date between today and one week from today and Please choose a time between 17:00-23:00.</span>
                             @error('res_date')<div class="text-sm text-red-500">{{ $message }}</div>@enderror
                         </div>
@@ -71,7 +71,7 @@
                                 min =1
                                 max = 10
                                 value="{{ $reservation->guest_number ?? '' }}"
-                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-green-500 focus:border-green-500" />
+                                class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-[#E5C07B] focus:border-[#C9A35A]" />
                             @error('guest_number')<div class="text-sm text-red-500">{{ $message }}</div>@enderror
                         </div>
                     </div>
@@ -80,8 +80,13 @@
                         <label class="flex items-center">
                             <input type="checkbox" name="wants_menu"
                                 {{ isset($reservation->wants_menu) ? 'checked' : '' }}
-                                class="mr-2">
-                            Would you like to order from the Menu?
+                                class="w-4 h-4
+                                        text-[#C9A35A]
+                                        focus:ring-[#E5C07B]
+                                        focus:ring-2
+                                        focus:ring-offset-0
+                                        border-gray-300 rounded">
+                             <span>Would you like to order from the Menu?</span>
                         </label>
                     
                         <p class="text-xs text-gray-500 mt-1">

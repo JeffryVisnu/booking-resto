@@ -94,8 +94,14 @@
 
                 <!-- Confirm -->
                 <div class="mt-6 flex items-start">
-                    <input type="checkbox" id="confirm" name="confirm" 
-                           class="w-4 h-4 mt-1">
+                    <input type="checkbox" id="confirm" name="confirm"
+                        class="w-4 h-4 mt-1
+                                text-[#C9A35A]
+                                focus:ring-[#E5C07B]
+                                focus:ring-2
+                                focus:ring-offset-0
+                                border-gray-300 rounded">
+
                     <label for="confirm" class="ml-2 text-sm">
                         I confirm that the data entered above is complete and correct.
                     </label>
