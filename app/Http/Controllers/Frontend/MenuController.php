@@ -18,9 +18,27 @@ class MenuController extends Controller
         $categories = Category::all();
 
         if ($categoryFilter) {
-            $menus->where('category_id', $categoryFilter);
+
+            $selectedCategory = Category::find($categoryFilter);
+
+            if ($selectedCategory) {
+
+                if ($selectedCategory->parent_id === null) {
+                    
+                    $childIds = Category::where('parent_id', $selectedCategory->id)
+                                        ->pluck('id');
+
+                    $menus->whereIn('category_id', $childIds);
+
+                } else {
+    
+                    $menus->where('category_id', $categoryFilter);
+                }
+
+            }
         }
 
+        
         if ($sort == 'price_asc') {
             $menus->orderBy('price', 'asc');
         } elseif ($sort == 'price_desc') {
